@@ -8,7 +8,7 @@ resource "spectrocloud_cluster_profile" "simple-app" {
   tags        = concat(["managed-by:tf", "repository-on:github"])
   cloud       = "all"
   type        = "add-on"
-  version     = "1.0.0"
+  version     = "1.0.1"
 
   pack {
     name = "manifest-namespace"
