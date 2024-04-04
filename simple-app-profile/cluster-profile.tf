@@ -24,7 +24,7 @@ resource "spectrocloud_cluster_profile" "simple-app" {
     manifest {
       name    = "manifest-secret"
       content = file("${path.cwd}/manifests/secret.yaml")
-    }        
+    }
   }
 }
 
