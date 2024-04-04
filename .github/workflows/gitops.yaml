@@ -1,0 +1,99 @@
+name: "Palette cluster profile update using GitOps actions"
+ 
+on:
+ push:
+   branches:
+   - main
+   paths:
+   - simple-app-profile/**
+ pull_request:
+   branches:
+   - main
+   paths:
+   - simple-app-profile/**
+ 
+env:
+  # verbosity setting for Terraform logs
+  TF_LOG: INFO
+  # disable TF input
+  TF_INPUT: false
+  # Credentials TF backend (S3)
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  # S3 URL (for Minio)
+  AWS_S3_ENDPOINT: ${{ secrets.S3_ENDPOINT }}
+  # S3 bucket for TF backend
+  BUCKET_TF_STATE: ${{ secrets.BUCKET_TF_STATE }}
+  # Credentials to get access to SpectroCloud
+  SC_API_KEY: ${{ secrets.SC_API_KEY }}
+  SC_PROJECT_NAME: ${{ secrets.SC_PROJECT_NAME }}
+
+ 
+jobs:
+ terraform:
+   name: "Terraform Infrastructure Change Management"
+   runs-on: ubuntu-latest
+   defaults:
+     run:
+       shell: bash
+       working-directory: ./simple-app-profile
+ 
+   steps:
+     - name: Checkout the repository 
+       uses: actions/checkout@v2
+ 
+     - name: Setup Terraform with specified version on the runner
+       uses: hashicorp/setup-terraform@v3
+    
+     - name: Terraform init
+       id: init
+       run: terraform init -backend-config="bucket=$BUCKET_TF_STATE" -backend-config="key=simple-app.tfstate" -backend-config="region=main" -backend-config="skip_credentials_validation=true" -backend-config="skip_requesting_account_id=true" -backend-config="skip_metadata_api_check=true" -backend-config="skip_region_validation=true" -backend-config="use_path_style=true"
+ 
+     - name: Terraform format
+       id: fmt
+       run: terraform fmt -check
+    
+     - name: Terraform validate
+       id: validate
+       run: terraform validate 
+ 
+     - name: Terraform plan
+       id: plan
+       if: github.event_name == 'pull_request'
+       run: terraform plan -no-color -input=false -var="sc_api_key=$SC_API_KEY" -var="sc_project_name=$SC_PROJECT_NAME"
+       continue-on-error: true
+    
+     - uses: actions/github-script@v6
+       if: github.event_name == 'pull_request'
+       env:
+         PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
+       with:
+         script: |
+           const output = `#### Terraform Format and Style 🖌\`${{ steps.fmt.outcome }}\`
+           #### Terraform Initialization ⚙️\`${{ steps.init.outcome }}\`
+           #### Terraform Validation 🤖\`${{ steps.validate.outcome }}\`
+           #### Terraform Plan 📖\`${{ steps.plan.outcome }}\`
+ 
+           <details><summary>Show Plan</summary>
+ 
+           \`\`\`\n
+           ${process.env.PLAN}
+           \`\`\`
+ 
+           </details>
+           *Pushed by: @${{ github.actor }}, Action: \`${{ github.event_name }}\`*`;
+ 
+           github.rest.issues.createComment({
+             issue_number: context.issue.number,
+             owner: context.repo.owner,
+             repo: context.repo.repo,
+             body: output
+           })
+ 
+     - name: Terraform Plan Status
+       if: steps.plan.outcome == 'failure'
+       run: exit 1
+ 
+     - name: Terraform Apply
+       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+       run: terraform apply -auto-approve -input=false -var="sc_api_key=$SC_API_KEY" -var="sc_project_name=$SC_PROJECT_NAME"
