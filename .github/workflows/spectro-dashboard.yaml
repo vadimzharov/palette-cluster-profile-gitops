@@ -1,4 +1,4 @@
-name: "Palette cluster profile update using GitOps actions"
+name: "Spectro Dashboard Cluster Profile"
  
 on:
   push:

@@ -1,4 +1,4 @@
-name: "Palette cluster profile update using GitOps actions"
+name: "Simple App Cluster Profile"
  
 on:
   push:
