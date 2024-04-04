@@ -37,7 +37,7 @@ jobs:
    defaults:
      run:
        shell: bash
-       working-directory: ./simple-app-profile
+       working-directory: ./simple-app-manifests-profile
  
    steps:
      - name: Checkout the repository 
