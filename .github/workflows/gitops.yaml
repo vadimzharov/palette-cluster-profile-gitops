@@ -1,16 +1,16 @@
 name: "Palette cluster profile update using GitOps actions"
  
 on:
- push:
-   branches:
-   - main
-   paths:
-   - simple-app-profile/**
- pull_request:
-   branches:
-   - main
-   paths:
-   - simple-app-profile/**
+  push:
+    branches:
+    - main
+    paths:
+    - simple-app-profile/**
+  pull_request:
+    branches:
+    - main
+    paths:
+    - simple-app-profile/**
   workflow_dispatch:
  
 env:
