@@ -4,3 +4,4 @@ metadata:
   name: demo-app
   labels:
     cluster-profile: "1.0.1"
+    test-cluster-update: "1.0.1"
