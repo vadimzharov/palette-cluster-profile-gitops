@@ -32,7 +32,7 @@ env:
  
 jobs:
  terraform:
-   name: "Terraform Infrastructure Change Management"
+   name: "Palette Cluster Profile Update using Terraform"
    runs-on: ubuntu-latest
    defaults:
      run:
