@@ -1,3 +1,3 @@
-simple-app-profile/.*
-simple-app-profile/terraform.tfstate
-simple-app-profile/terraform.tfstate.backup
+simple-app-manifests-profile/.*
+simple-app-manifests-profile/terraform.tfstate
+simple-app-manifests-profile/terraform.tfstate.backup

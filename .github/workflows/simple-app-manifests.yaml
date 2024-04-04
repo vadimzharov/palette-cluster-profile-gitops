@@ -5,12 +5,12 @@ on:
     branches:
     - main
     paths:
-    - simple-app-profile/**
+    - simple-app-manifests-profile/**
   pull_request:
     branches:
     - main
     paths:
-    - simple-app-profile/**
+    - simple-app-manifests-profile/**
   workflow_dispatch:
  
 env:
