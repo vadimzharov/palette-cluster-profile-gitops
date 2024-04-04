@@ -11,6 +11,7 @@ on:
    - main
    paths:
    - simple-app-profile/**
+  workflow_dispatch:
  
 env:
   # verbosity setting for Terraform logs
