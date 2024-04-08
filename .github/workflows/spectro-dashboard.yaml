@@ -23,7 +23,7 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   AWS_REGION: ${{ secrets.AWS_REGION }}  
   # S3 URL (for Minio)
-  AWS_S3_ENDPOINT: ${{ secrets.S3_ENDPOINT }}
+  AWS_S3_ENDPOINT: ${{ secrets.AWS_S3_ENDPOINT }}
   # S3 bucket for TF backend
   BUCKET_TF_STATE: ${{ secrets.BUCKET_TF_STATE }}
   # Credentials to get access to SpectroCloud
