@@ -38,4 +38,4 @@ Use the following steps to try these examples.
 After creating all required secrets in the repository, go to **Actions** menu and trigger the workflow manually. 
 
 Ensure corresponding cluster profile created:
-
+![alt text](pictures/simple-app-tf-01.png)
