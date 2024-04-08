@@ -47,7 +47,7 @@ Update manifest in `simple-app-manifests-profile/manifests`, push the changes an
 ![alt text](pictures/simple-app-tf-02.png)
 
 
-Do the same but for Spectro Dashboard pack - change value `palette.config.dashboard.access` in values YAML file from `public` to `private` and ensure cluster profile updated in Palette:
+Do the same but for Spectro Dashboard pack - change value `palette.config.dashboard.access` in Spectro Pack [values YAML file](spectro-dashboard-profile/values/spectro-k8s-dashboard.yaml) from `public` to `private` and ensure cluster profile updated in Palette:
 
 ![alt text](pictures/spectro-dashboard-tf-02.png)
 
