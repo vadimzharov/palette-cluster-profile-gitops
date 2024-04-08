@@ -49,7 +49,7 @@ Update manifest in `simple-app-manifests-profile/manifests`, push the changes an
 
 Do the same but for Spectro Dashboard pack - change value `palette.config.dashboard.access` in values YAML file from `public` to `private` and ensure cluster profile updated in Palette:
 
-![alt text](pictures/spectro-dashboard-tf-01.png)
+![alt text](pictures/spectro-dashboard-tf-02.png)
 
 
 
