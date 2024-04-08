@@ -21,6 +21,7 @@ env:
   # Credentials TF backend (S3)
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_REGION: ${{ secrets.AWS_REGION }}  
   # S3 URL (for Minio)
   AWS_S3_ENDPOINT: ${{ secrets.S3_ENDPOINT }}
   # S3 bucket for TF backend
