@@ -39,3 +39,12 @@ After creating all required secrets in the repository, go to **Actions** menu an
 
 Ensure corresponding cluster profile created:
 ![alt text](pictures/simple-app-tf-01.png)
+
+![alt text](spectro-dashboard-tf-01.png)
+
+
+Update manifest in `simple-app-manifests-profile/manifests`, push the changes and ensure changes has been applied to the profile. For example, changing label value for namespace in `simple-app-manifests-profile/manifests/namespace.yaml` triggers the worflow to update cluster profile in Palette:
+
+
+
+
