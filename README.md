@@ -37,19 +37,19 @@ Use the following steps to try these examples.
 
 After creating all required secrets in the repository, go to **Actions** menu and trigger the workflow manually. 
 
-Ensure corresponding cluster profile created:
+Ensure corresponding cluster profiles created:
 ![alt text](pictures/simple-app-tf-01.png)
 
 ![alt text](pictures/spectro-dashboard-tf-01.png)
 
 
-Update manifest in `simple-app-manifests-profile/manifests`, push the changes and ensure changes has been applied to the profile. For example, changing label value for ![namespace manifest](simple-app-manifests-profile/manifests/namespace.yaml) triggers the worflow to update cluster profile in Palette:
-![alt text](simple-app-tf-02.png)
+Update manifest in `simple-app-manifests-profile/manifests`, push the changes and ensure changes has been applied to the profile. For example, changing label value for [namespace manifest](simple-app-manifests-profile/manifests/namespace.yaml) triggers the worflow to update cluster profile in Palette:
+![alt text](pictures/simple-app-tf-02.png)
 
 
 Do the same but for Spectro Dashboard pack - change value `palette.config.dashboard.access` in values YAML file from `public` to `private` and ensure cluster profile updated in Palette:
 
-
+![alt text](pictures/spectro-dashboard-tf-01.png)
 
 
 
