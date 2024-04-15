@@ -14,7 +14,7 @@ pack:
   palette:
     config:
       dashboard:
-        access: public  
+        access: private  
 charts:
   kubernetes-dashboard:
     fullnameOverride: kubernetes-dashboard
