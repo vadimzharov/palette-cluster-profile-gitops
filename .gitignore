@@ -1,3 +1,4 @@
+*/.*
 simple-app-manifests-profile/.*
 simple-app-manifests-profile/terraform.tfstate
 simple-app-manifests-profile/terraform.tfstate.backup
